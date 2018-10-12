@@ -29,7 +29,7 @@ export default class Header extends Component{
     getWeather = ()=>{
         axios.get('http://t.weather.sojson.com/api/weather/city/101010100').then(res=>{
             let weather = res.data.data.forecast[0]
-            console.log(weather)
+            // console.log(weather)
             let weatherStr = `${weather.low} ~ ${weather.high}  ${weather.fx}
             ${weather.fl}`
             this.setState({
