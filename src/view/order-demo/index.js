@@ -108,6 +108,25 @@ class OrderDemo extends Component {
     }
     //用户已经决定结束这个订单
     handleEnd =()=>{
+        let id = this.state.selectedIndex[0].id
+        this.setState({
+            isShowModel:false
+        })
+        axios.get('/order/finish_order',{id}).then(res => {
+            if(res == 0){
+                message.success('结束订单成功')
+                this.getTable()
+            }
+        })
+    }
+    //用户决定跳转到详情页面
+    handleDetail=()=>{
+        let item = this.state.selectedItem
+        if(!item){
+            message.info('请选择一项订单进行操作')
+        }else{
+            window.open(`/#/commom/order/detail_demo/${item[0].id}`,'_blank')            
+        }
 
     }
 
@@ -247,7 +266,7 @@ class OrderDemo extends Component {
                     </div>
                 </Card>
                 <Card style={{marginTop:'-1px'}}>
-                    <Button  type="primary" className="mgr-20">订单详情</Button>
+                    <Button  type="primary" className="mgr-20" onClick={this.handleDetail}>订单详情</Button>
                     <Button onClick={this.handleDone}>结束订单</Button>
                 </Card>
                 <Card>

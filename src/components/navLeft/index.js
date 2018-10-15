@@ -32,7 +32,7 @@ export default class NavLeft extends Component {
                             </Link>
                         </MenuItem>
                         <MenuItem>
-                            <Link to='/admin/echarts/pie'>
+                            <Link to='/admin/echarts/pie_demo'>
                                 饼状图
                             </Link>
                         </MenuItem>
